@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphic Registration Form</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Poppins", sans-serif; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            padding: 20px;
+        }
+
+        .wrapper {
+            width: 90%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        h2 { color: white; }
+
+        .form-group {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        label { color: white; display: block; }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.3rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid white;
+            outline: none;
+        }
+
+        /* Password Strength Indicator */
+        .password-strength {
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .weak { color: red; }
+        .medium { color: orange; }
+        .strong { color: green; }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            margin-top: 1rem;
+            color: white;
+        }
+
+        .checkbox-container input { margin-right: 0.5rem; }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background: white;
+            color: #1a2a6c;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 500px) { .wrapper { width: 100%; padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+<!-- Registration Form -->
+<div class="wrapper">
+    <h2>Sign Up</h2>
+    <form action="#" method="POST">
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required oninput="checkPasswordStrength()">
+            <div id="password-strength" class="password-strength">Enter a password</div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" required>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="terms" required>
+            <label for="terms">I agree to the Terms & Conditions</label>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    function checkPasswordStrength() {
+        var password = document.getElementById("password").value;
+        var strengthText = document.getElementById("password-strength");
+
+        var hasUpperCase = /[A-Z]/.test(password);
+        var hasLowerCase = /[a-z]/.test(password);
+        var hasNumbers = /[0-9]/.test(password);
+        var hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        var lengthCheck = password.length >= 8;
+
+        if (lengthCheck && hasUpperCase && hasLowerCase && hasNumbers && hasSpecial) {
+            strengthText.textContent = "Strong Password";
+            strengthText.className = "password-strength strong";
+        } else if (password.length >= 6 && (hasUpperCase || hasLowerCase) && (hasNumbers || hasSpecial)) {
+            strengthText.textContent = "Medium Strength Password";
+            strengthText.className = "password-strength medium";
+        } else if (password.length > 0) {
+            strengthText.textContent = "Weak Password";
+            strengthText.className = "password-strength weak";
+        } else {
+            strengthText.textContent = "Enter a password";
+            strengthText.className = "password-strength";
+        }
+    }
+</script>
+
+</body>
+</html>
