@@ -23,7 +23,7 @@ A modern, **Glassmorphic** registration form built using **HTML, CSS, and JavaSc
 ## 📸 Preview  
 
 ### Empty Form  
-![Glassmorphic Form - Empty](https://raw.githubusercontent.com/saicharan-bhuthkuri/Glassmorphic_Registration_Form/main/image1.jpg)
+![Glassmorphic Form - Empty](https://github.com/saicharan-bhuthkuri/Glassmorphic_Registration_Form/blob/master/image1.jpg)
 
 ### Filled Form  
 ![Glassmorphic Form - Filled](https://raw.githubusercontent.com/saicharan-bhuthkuri/Glassmorphic_Registration_Form/main/image2.jpg)  
